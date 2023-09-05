@@ -12,11 +12,13 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import os
 from pathlib import Path
 
+#from dotenv import load_dotenv
+#load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 # data/web/static
 # data/web/media
-DATA_DIR = BASE_DIR.parent/'data'/'web'
+DATA_DIR = BASE_DIR.parent / 'data' / 'web'
 
 
 # Quick-start development settings - unsuitable for production
@@ -27,10 +29,13 @@ SECRET_KEY = os.getenv('SECRET_KEY','changeme')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(int(os.getenv('DEBUG', 0)))
+print('OLA',DEBUG)
 
 ALLOWED_HOSTS = [
-    h.strip() for h in os.getenv('ALLOWED_HOSTS', '').split(',') if h.strip()
+    h.strip() for h in os.getenv('ALLOWED_HOSTS', '').split(',') 
+    if h.strip()
 ]
+print('ola', ALLOWED_HOSTS)
 
 
 # Application definition
@@ -125,9 +130,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = DATA_DIR/'static'
+STATIC_ROOT = DATA_DIR/ 'static'
 MEDIA_URL = '/media/'
-MEDIA_ROOT = DATA_DIR/'media'
+MEDIA_ROOT = DATA_DIR/ 'media'
 
 
 # Default primary key field type
